@@ -4,7 +4,7 @@ monthly_expanses = int(input("Enter your total monthly expenses:"))
 
 monthly_savings = income - monthly_expanses
 
-Projected_Savings = monthly_savings * 12 + (monthly_savings * 12 * 0.05)
+Projected_Savings = (monthly_savings * 12 + (monthly_savings * 12 * 0.05))
 
 print("Your monthly savings are" , monthly_savings)
 
