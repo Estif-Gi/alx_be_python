@@ -1,34 +1,48 @@
 # Prompt user for task information
 task = input("Enter the task description: ")
-priority = input("Enter the task's priority (high, medium, low): ").lower()
-time_bound = input("Is the task time-bound? (yes or no): ").lower()
+
+# Get priority with validation
+while True:
+    priority = input("Enter the task's priority (high, medium, low): ").lower()
+    if priority in ["high", "medium", "low"]:
+        break
+    else:
+        print("Please enter only: high, medium, or low")
+
+# Get time-bound status with validation
+while True:
+    time_bound = input("Is the task time-bound? (yes or no): ").lower()
+    if time_bound in ["yes", "no"]:
+        break
+    else:
+        print("Please enter only: yes or no")
 
 # Process the task based on priority and time sensitivity
 match priority:
     case "high":
-        reminder = f"High priority task: '{task}'"
+        reminder = f"🚨 High priority task: '{task}'"
         if time_bound == "yes":
             reminder += " that requires immediate attention today!"
         else:
-            reminder += " - please address this soon."
+            reminder += " - please address this as soon as possible."
     
     case "medium":
-        reminder = f"Medium priority task: '{task}'"
+        reminder = f"⚠️ Medium priority task: '{task}'"
         if time_bound == "yes":
-            reminder += " - complete this by the end of the week."
+            reminder += " - aim to complete this within the next few days."
         else:
-            reminder += " - schedule this for the upcoming weeks."
+            reminder += " - schedule this for when you have availability."
     
     case "low":
-        reminder = f"Low priority task: '{task}'"
+        reminder = f"✅ Low priority task: '{task}'"
         if time_bound == "yes":
-            reminder += " - try to complete this when you have free time."
+            reminder += " - work on this when you have spare time."
         else:
-            reminder += " - no rush on this task."
-    
-    case _:
-        reminder = "Invalid priority level entered."
+            reminder += " - no urgent timeline for this task."
 
 # Print the customized reminder
-print("\nTask Reminder:")
+print("\n" + "="*50)
+print("TASK REMINDER")
+print("="*50)
 print(reminder)
+print("="*50)
