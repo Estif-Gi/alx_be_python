@@ -1,21 +1,24 @@
-# Prompt user for task information
-task = input("Enter the task description: ")
+def get_valid_input(prompt, valid_options=None):
+    """Get validated user input"""
+    while True:
+        user_input = input(prompt).strip()
+        if not user_input:
+            print("Error: This field cannot be empty!")
+            continue
+        
+        if valid_options and user_input.lower() not in valid_options:
+            print(f"Error: Please enter one of: {', '.join(valid_options)}")
+            continue
+            
+        return user_input
 
-# Get priority with validation
-while True:
-    priority = input("Enter the task's priority (high, medium, low): ").lower()
-    if priority in ["high", "medium", "low"]:
-        break
-    else:
-        print("Please enter only: high, medium, or low")
-
-# Get time-bound status with validation
-while True:
-    time_bound = input("Is the task time-bound? (yes or no): ").lower()
-    if time_bound in ["yes", "no"]:
-        break
-    else:
-        print("Please enter only: yes or no")
+# Prompt user for task information with comprehensive validation
+print("=== TASK MANAGEMENT SYSTEM ===")
+task = get_valid_input("Enter the task description: ")
+priority = get_valid_input("Enter the task's priority (high, medium, low): ", 
+                          ["high", "medium", "low"]).lower()
+time_bound = get_valid_input("Is the task time-bound? (yes or no): ", 
+                           ["yes", "no"]).lower()
 
 # Process the task based on priority and time sensitivity
 match priority:
