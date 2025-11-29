@@ -3,5 +3,5 @@ row = 0
 while row < size:
     for i in range(1,size):
         print("*",end="")
-        print("")
+    print("")
     row +=1
