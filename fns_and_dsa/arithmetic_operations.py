@@ -1,7 +1,7 @@
 val = 0
 message = ""
 
-def perform_operation( num1 , num2 , operation = ["add" , "subtract" , "multiply" , "divide"]):
+def perform_operation(num1,num2,operation = ["add" , "subtract" , "multiply" , "divide"]):
     if operation == "add":
         val = num1 + num2
         return val
