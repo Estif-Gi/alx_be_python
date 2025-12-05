@@ -1,29 +1,19 @@
-val = 0
-message = ""
-
-def perform_operation(num1,num2,operation = ["add" , "subtract" , "multiply" , "divide"]):
-    if operation == "add":
-        val = num1 + num2
-        return val
-    elif operation == "subtract":
-        val = num1 - num2
-        return val
-    elif operation == "multiply":
-        val = num1 * num2
-        return val
-    elif operation == "divide":
+def perform_operation(num1: float, num2: float, operation: str):
+   
+    # Convert operation to lowercase for case-insensitive matching
+    operation = operation.lower()
+    
+    if operation == 'add':
+        return num1 + num2
+    elif operation == 'subtract':
+        return num1 - num2
+    elif operation == 'multiply':
+        return num1 * num2
+    elif operation == 'divide':
         if num2 == 0:
-            message = "zero is indivisible"
-            return message
+            # Return a specific error message that can be recognized in main.py
+            return "Error: Division by zero is not allowed."
         else:
-            val = num1 / num2
-            return val
+            return num1 / num2
     else:
-        message = "We can't make this operation"
-        return message
-    # message = f"{val} here is the value"
-    
-
-    
-
-    
+        return f"Error: Invalid operation '{operation}'. Use 'add', 'subtract', 'multiply', or 'divide'."
