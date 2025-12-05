@@ -1,5 +1,5 @@
 def display_menu():
-    print("\nShopping List Manager")
+    print("Shopping List Manager")
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
@@ -7,41 +7,30 @@ def display_menu():
 
 def main():
     shopping_list = []
-    
     while True:
-        display_menu()
+        display_menu()  # Make sure this line is inside the while loop
         choice = input("Enter your choice: ")
 
         if choice == '1':
             # Prompt for and add an item
-            item = input("Enter item to add: ").strip()
-            if item:
-                shopping_list.append(item)
-                print(f"Added '{item}' to shopping list.")
-            else:
-                print("Item cannot be empty.")
-                
+            item = input("Enter item to add: ")
+            shopping_list.append(item)
+            print(f"Added '{item}' to shopping list.")
+            
         elif choice == '2':
             # Prompt for and remove an item
-            if shopping_list:
-                item = input("Enter item to remove: ").strip()
-                if item in shopping_list:
-                    shopping_list.remove(item)
-                    print(f"Removed '{item}' from shopping list.")
-                else:
-                    print(f"'{item}' not found in shopping list.")
+            item = input("Enter item to remove: ")
+            if item in shopping_list:
+                shopping_list.remove(item)
+                print(f"Removed '{item}' from shopping list.")
             else:
-                print("Shopping list is empty!")
+                print(f"'{item}' not found in shopping list.")
                 
         elif choice == '3':
             # Display the shopping list
-            if shopping_list:
-                print("\nYour Shopping List:")
-                for item in shopping_list:
-                    print(f"- {item}")
-                print(f"Total: {len(shopping_list)} items")
-            else:
-                print("Your shopping list is empty.")
+            print("Your Shopping List:")
+            for item in shopping_list:
+                print(f"- {item}")
                 
         elif choice == '4':
             print("Goodbye!")
