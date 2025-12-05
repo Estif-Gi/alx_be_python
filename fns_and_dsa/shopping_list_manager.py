@@ -8,18 +8,18 @@ def display_menu():
 def main():
     shopping_list = []
     while True:
-        display_menu()  # Make sure this line is inside the while loop
-        choice = input("Enter your choice: ")
-
+        display_menu()
+        choice = input("Enter your choice (1-4): ").strip()
+        
         if choice == '1':
             # Prompt for and add an item
-            item = input("Enter item to add: ")
+            item = input("Enter item to add: ").strip()
             shopping_list.append(item)
             print(f"Added '{item}' to shopping list.")
             
         elif choice == '2':
             # Prompt for and remove an item
-            item = input("Enter item to remove: ")
+            item = input("Enter item to remove: ").strip()
             if item in shopping_list:
                 shopping_list.remove(item)
                 print(f"Removed '{item}' from shopping list.")
