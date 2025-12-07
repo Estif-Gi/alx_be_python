@@ -3,44 +3,28 @@ from datetime import datetime, timedelta
 def display_current_datetime():
     """
     Display the current date and time in YYYY-MM-DD HH:MM:SS format.
+    Saves the current date inside a current_date variable.
+    Returns the formatted date/time string.
     """
-    # Get current date and time
+    # Get current date and time and save in current_date variable
     current_date = datetime.now()
     
-    # Format and print in readable format
+    # Format the date/time
     formatted_datetime = current_date.strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Print the formatted date/time
     print(f"Current Date and Time: {formatted_datetime}")
     
-    return current_date
+    return formatted_datetime
 
-def calculate_future_date(current_date, days_to_add):
+def calculate_future_date():
     """
     Calculate and display a future date based on days added.
-    
-    Args:
-        current_date: The starting date as a datetime object
-        days_to_add: Number of days to add (integer)
+    Saves the future date inside a future_date variable.
+    Returns the formatted future date string.
     """
-    # Calculate future date using timedelta
-    future_date = current_date + timedelta(days=days_to_add)
-    
-    # Format and print the future date
-    formatted_future_date = future_date.strftime("%Y-%m-%d")
-    print(f"Future Date ({days_to_add} days from now): {formatted_future_date}")
-    
-    return future_date
-
-def main():
-    # Part 1: Display Current Date and Time
-    print("=" * 50)
-    print("PART 1: CURRENT DATE AND TIME")
-    print("=" * 50)
-    current_date = display_current_datetime()
-    
-    # Part 2: Calculate Future Date
-    print("\n" + "=" * 50)
-    print("PART 2: FUTURE DATE CALCULATOR")
-    print("=" * 50)
+    # Get current date
+    current_date = datetime.now()
     
     # Prompt user for number of days
     while True:
@@ -51,12 +35,36 @@ def main():
             if days_to_add < 0:
                 print("Please enter a non-negative number.")
                 continue
-                
-            future_date = calculate_future_date(current_date, days_to_add)
             break
             
         except ValueError:
             print("Invalid input. Please enter an integer.")
+    
+    # Calculate and save future date in future_date variable
+    future_date = current_date + timedelta(days=days_to_add)
+    
+    # Format the future date
+    formatted_future_date = future_date.strftime("%Y-%m-%d")
+    
+    # Print the future date
+    print(f"Future Date ({days_to_add} days from now): {formatted_future_date}")
+    
+    return formatted_future_date
 
-if __name__ == "__main__":
-    main()
+# Call the functions and store their return values
+print("=" * 50)
+print("CURRENT DATE AND TIME")
+print("=" * 50)
+formatted_current = display_current_datetime()
+
+print("\n" + "=" * 50)
+print("FUTURE DATE CALCULATOR")
+print("=" * 50)
+formatted_future = calculate_future_date()
+
+# Display the stored/formatted values
+print("\n" + "=" * 50)
+print("STORED FORMATTED VALUES:")
+print("=" * 50)
+print(f"Formatted current datetime: {formatted_current}")
+print(f"Formatted future date: {formatted_future}")
