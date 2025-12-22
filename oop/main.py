@@ -1,4 +1,4 @@
-from polymorphism_demo import Calculator
+from class_static_methods_demo import Calculator
 
 def main():
     # Using the static method
